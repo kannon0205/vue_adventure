@@ -1,6 +1,8 @@
 <template>
   <div class="l_wrapper">
-    <div class="bg" :style="{ backgroundImage: 'url(' + bg + ')' }" />
+    <div class="bg">
+      <img :src="bg" alt="背景画像" width="800" height="600" />
+    </div>
 
     <div class="l_characters">
       <div v-for="(image, index) in imageData" :key="index">
@@ -21,19 +23,19 @@
 
 <style scoped>
 .l_wrapper {
-  width: 100%;
+  width: 800px;
   height: 600px;
   position: absolute;
 }
 
 .bg {
-  width: 100%;
+  width: 800px;
   height: 600px;
   position: absolute;
 }
 
 .l_characters {
-  width: 100%;
+  width: 800px;
   padding-top: 100px;
   position: relative;
   z-index: 2;
