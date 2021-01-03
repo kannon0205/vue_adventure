@@ -9,6 +9,7 @@
             :class="image.reverse"
             width="364"
             height="500"
+            rel="preload"
           />
         </p>
       </div>
