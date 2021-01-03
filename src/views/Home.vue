@@ -1,18 +1,35 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="l_game-window" :style="{ backgroundImage: 'url(' + bg + ')' }">
+    <the-header />
+    <the-characters />
+    <the-message-window />
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+<style scoped>
+.l_game-window {
+  width: 800px;
+  height: 600px;
+  position: relative;
+  background-image: url("../assets/img/bg/01c_sunset_m.jpg");
+}
+</style>
 
+<script>
+import TheHeader from "@/components/TheHeader.vue";
+import TheCharacters from "@/components/TheCharacters.vue";
+import TheMessageWindow from "@/components/TheMessageWindow.vue";
 export default {
-  name: "Home",
+  name: "Game",
+  computed: {
+    bg: function() {
+      return this.$store.getters.imageData[this.$store.getters.scene].bg;
+    }
+  },
   components: {
-    HelloWorld
+    TheHeader,
+    TheCharacters,
+    TheMessageWindow
   }
 };
 </script>
