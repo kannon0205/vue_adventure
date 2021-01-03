@@ -34,7 +34,9 @@ export default new Vuex.Store({
   },
   mutations: {
     gameStart(state) {
-      state.loaded = true;
+      setTimeout(() => {
+        state.loaded = true;
+      }, 1000);
     },
     sceneNext(state) {
       if (state.sceneEnd) {

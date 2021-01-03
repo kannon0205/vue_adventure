@@ -1,8 +1,9 @@
 <template>
-  <div v-show="loaded" class="l_game-window">
-    <the-header />
-    <the-images />
-    <the-message-window />
+  <div class="l_game-window">
+    <the-loading v-if="!loaded" />
+    <the-header v-show="loaded" />
+    <the-images v-show="loaded" />
+    <the-message-window v-show="loaded" />
   </div>
 </template>
 
@@ -15,6 +16,7 @@
 </style>
 
 <script>
+import TheLoading from "@/components/TheLoading.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import TheImages from "@/components/TheImages.vue";
 import TheMessageWindow from "@/components/TheMessageWindow.vue";
@@ -26,6 +28,7 @@ export default {
     }
   },
   components: {
+    TheLoading,
     TheHeader,
     TheImages,
     TheMessageWindow

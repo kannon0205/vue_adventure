@@ -1,6 +1,7 @@
 <template>
   <div class="l_wrapper">
     <div class="bg" :style="{ backgroundImage: 'url(' + bg + ')' }" />
+
     <div class="l_characters">
       <div v-for="(image, index) in imageData" :key="index">
         <p class="character" :class="image.class">
@@ -94,8 +95,10 @@ export default {
     for (let i = 0; i < this.$store.getters.preload.length; i++) {
       images[i] = new Image();
       images[i].src = this.$store.getters.preload[i];
+      if (i === this.$store.getters.preload.length - 1) {
+        this.gameStart();
+      }
     }
-    this.gameStart();
   }
 };
 </script>
