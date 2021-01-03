@@ -83,6 +83,11 @@ export default {
       return this.$store.getters.imageData[this.$store.getters.scene].character;
     }
   },
+  methods: {
+    gameStart() {
+      this.$store.dispatch("gameStart");
+    }
+  },
   created() {
     let images = new Array(this.$store.getters.preload.length);
 
@@ -90,6 +95,7 @@ export default {
       images[i] = new Image();
       images[i].src = this.$store.getters.preload[i];
     }
+    this.gameStart();
   }
 };
 </script>

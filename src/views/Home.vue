@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded" class="l_game-window">
+  <div v-show="loaded" class="l_game-window">
     <the-header />
     <the-images />
     <the-message-window />
