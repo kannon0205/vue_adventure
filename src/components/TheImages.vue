@@ -14,6 +14,7 @@
         </p>
       </div>
     </div>
+    <div></div>
   </div>
 </template>
 
@@ -82,15 +83,12 @@ export default {
       return this.$store.getters.imageData[this.$store.getters.scene].character;
     }
   },
-  created: {
-    preload: function() {
-      const imagesUrl = this.$store.getters.preload;
-      let images = new Array(imagesUrl.length);
+  created() {
+    let images = new Array(this.$store.getters.preload.length);
 
-      for (let i = 0; i < imagesUrl.length; i++) {
-        images[i] = new Image();
-        images[i].src = imagesUrl[i];
-      }
+    for (let i = 0; i < this.$store.getters.preload.length; i++) {
+      images[i] = new Image();
+      images[i].src = this.$store.getters.preload[i];
     }
   }
 };
