@@ -81,6 +81,17 @@ export default {
     imageData: function() {
       return this.$store.getters.imageData[this.$store.getters.scene].character;
     }
+  },
+  created: {
+    preload: function() {
+      const imagesUrl = this.$store.getters.preload;
+      let images = new Array(imagesUrl.length);
+
+      for (let i = 0; i < imagesUrl.length; i++) {
+        images[i] = new Image();
+        images[i].src = imagesUrl[i];
+      }
+    }
   }
 };
 </script>
