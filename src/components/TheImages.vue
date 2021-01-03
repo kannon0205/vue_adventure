@@ -1,5 +1,6 @@
 <template>
   <div class="l_wrapper">
+    <div class="bg" :style="{ backgroundImage: 'url(' + bg + ')' }" />
     <div class="l_characters">
       <div v-for="(image, index) in imageData" :key="index">
         <p class="character" :class="image.class">
@@ -21,12 +22,19 @@
   width: 100%;
   height: 600px;
   position: absolute;
-  z-index: 2;
 }
+
+.bg {
+  width: 100%;
+  height: 600px;
+  position: absolute;
+}
+
 .l_characters {
   width: 100%;
   padding-top: 100px;
   position: relative;
+  z-index: 2;
 }
 
 .character {
@@ -65,8 +73,11 @@
 
 <script>
 export default {
-  name: "TheCharacters",
+  name: "TheImages",
   computed: {
+    bg: function() {
+      return this.$store.getters.imageData[this.$store.getters.scene].bg;
+    },
     imageData: function() {
       return this.$store.getters.imageData[this.$store.getters.scene].character;
     }

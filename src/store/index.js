@@ -3,18 +3,22 @@ import Vuex from "vuex";
 
 // モジュール
 import textData from "@/store/modules/textData.js";
-import imageData from "@/store/modules/imageData.js";
+import imageIndex from "@/store/modules/imageIndex.js";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    loaded: true,
     scene: 1,
     sceneStart: true,
     sceneEnd: false,
     textDelay: 40
   },
   getters: {
+    loaded(state) {
+      return state.loaded;
+    },
     scene(state) {
       return state.scene;
     },
@@ -29,6 +33,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    gameStart(state) {
+      state.loaded = true;
+    },
     sceneNext(state) {
       if (state.sceneEnd) {
         state.textDelay = 40;
@@ -47,6 +54,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    gameStart({ commit }) {
+      commit("gameStart");
+    },
     sceneNext({ commit }) {
       commit("sceneNext");
     },
@@ -56,6 +66,6 @@ export default new Vuex.Store({
   },
   modules: {
     textData,
-    imageData
+    imageIndex
   }
 });
